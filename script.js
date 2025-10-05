@@ -103,12 +103,12 @@ class PlexusEffect {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('🚀 DOM loaded, initializing...');
+    console.log('DOM loaded, initializing...');
     
     const plexusCanvas = document.getElementById('plexus');
     if (plexusCanvas) {
         new PlexusEffect(plexusCanvas);
-        console.log('✅ Plexus effect initialized');
+        console.log('Plexus effect initialized');
     }
 
     initMobileMenu();
@@ -158,12 +158,13 @@ function initMobileMenu() {
 // ========== SERVICE WORKER ==========
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/service-worker.js')
+        navigator.serviceWorker.register('./service-worker.js')
             .then((registration) => {
-                console.log('✅ Service Worker registered successfully:', registration.scope);
+                console.log('Service Worker registered successfully!');
+                console.log('Scope:', registration.scope);
             })
             .catch((error) => {
-                console.log('❌ Service Worker registration failed:', error);
+                console.log('Service Worker registration FAILED:', error);
             });
     });
 }
@@ -191,16 +192,15 @@ if (window.location.pathname === '/' || window.location.pathname.includes('index
                 }
 
                 deferredPrompt.prompt();
-                
-                // Wait for user response
+
                 const { outcome } = await deferredPrompt.userChoice;
                 console.log(`User response to install prompt: ${outcome}`);
                 
                 if (outcome === 'accepted') {
-                    console.log('✅ User accepted the install prompt');
+                    console.log('User accepted the install prompt');
                     installButton.style.display = 'none';
                 } else {
-                    console.log('❌ User dismissed the install prompt');
+                    console.log('User dismissed the install prompt');
                 }
 
                 deferredPrompt = null;
@@ -210,7 +210,7 @@ if (window.location.pathname === '/' || window.location.pathname.includes('index
 }
 
 window.addEventListener('beforeinstallprompt', (e) => {
-    console.log('💾 beforeinstallprompt event fired');
+    console.log('beforeinstallprompt event fired');
     e.preventDefault();
     deferredPrompt = e;
 
@@ -220,18 +220,18 @@ window.addEventListener('beforeinstallprompt', (e) => {
 });
 
 window.addEventListener('appinstalled', () => {
-    console.log('✅ PWA was installed successfully');
+    console.log('PWA was installed successfully');
     deferredPrompt = null;
     if (installButton) {
         installButton.style.display = 'none';
     }
-    alert('✅ Aplikasi berhasil diinstall!');
+    alert('Aplikasi berhasil diinstall!');
 });
 
 window.addEventListener('online', () => {
-    console.log('🟢 Back online');
+    console.log('Back online');
 });
 
 window.addEventListener('offline', () => {
-    console.log('🔴 Gone offline');
+    console.log('Gone offline');
 });
