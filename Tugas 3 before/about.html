@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me - Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body data-theme="dark">
+    <div class="plexus-background">
+        <canvas id="plexus"></canvas>
+    </div>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">Tugas - 03 Desain Web</div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html" class="active">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <section id="about" class="section-padding" style="min-height: 100vh; display: flex; align-items: center;">
+            <div class="container">
+                <div class="about-grid">
+                    <div class="about-image-container">
+                        <img src="Aboutme.jpg" alt="Habibi Putra Rizqullah" 
+                             onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\'display:flex;align-items:center;justify-content:center;height:200px;color:rgba(255,255,255,0.7);font-weight:600;\'>📷 About Me</div>'">
+                    </div>
+                    <div class="about-text-content">
+                        <h2 class="section-title">About Me</h2>
+                        <p>
+                           Perkenalkan Nama saya Habibi Putra Rizqullah dengan NIM: 2411531001. Saya merupakan mahasiswa, Program Studi Informatika, Fakultas Teknologi Informasi, Universitas Andalas.
+                        </p>
+                        <p>
+                        Pada proyek kali ini, saya mengembangkan website sederhana menjadi sebuah Progressive Web App (PWA). Tujuan proyek ini adalah untuk mempelajari cara mengimplementasikan Web App Manifest, Service Worker, serta fitur offline dan installable agar website dapat berfungsi layaknya aplikasi native di perangkat pengguna.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <p class="footer-text">&copy; 2025 Habibi Putra Rizqullah. All Rights Reserved.</p>
+        </div>
+    </footer>
+    
+    <script src="script.js"></script>
+</body>
+</html>
