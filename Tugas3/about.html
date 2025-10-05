@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Tentang Habibi Putra Rizqullah">
+    <meta name="theme-color" content="#3b82f6">
+    <title>About - Portfolio PWA</title>
+    
+    <link rel="manifest" href="manifest.json">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="HPR Portfolio">
+    <link rel="apple-touch-icon" href="icon-192x192.png">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="plexus-background">
+        <canvas id="plexus"></canvas>
+    </div>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                Portofolio
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html" class="active">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-toggle" id="mobileToggle" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <main>
+        <section id="about" class="section-padding">
+            <div class="container">
+                <h2 class="section-title">Tentang Saya</h2>
+                <div class="about-grid">
+                    <div class="about-image-container">
+                        <img src="Aboutme.jpg" alt="Foto Habibi Putra Rizqullah"
+                             onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\'display:flex;align-items:center;justify-content:center;height:100%;color:rgba(255,255,255,0.7);font-weight:600;background:var(--card-bg);\'>📷 Foto</div>'">
+                    </div>
+                    <div class="about-text-content">
+                        <p>
+                            Halo! Nama saya <strong>Habibi Putra Rizqullah</strong>, seorang mahasiswa Informatika di Universitas Andalas. Saya memiliki ketertarikan yang mendalam pada dunia pengembangan web, terutama dalam menciptakan aplikasi yang fungsional dan menarik secara visual.
+                        </p>
+                        <p>
+                            Website portfolio ini adalah salah satu proyek saya untuk mendalami teknologi <strong>Progressive Web App (PWA)</strong>, yang menggabungkan keandalan aplikasi native dengan jangkauan luas dari sebuah web.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <p class="footer-text">&copy; 2025 Habibi Putra Rizqullah. All Rights Reserved.</p>
+        </div>
+    </footer>
+    
+    <script src="script.js"></script>
+</body>
+</html>
+

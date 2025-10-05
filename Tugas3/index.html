@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Progressive Web App Portfolio Habibi Putra Rizqullah - Mahasiswa Informatika Universitas Andalas">
+    <meta name="theme-color" content="#3b82f6">
+    <title>Habibi Putra Rizqullah - PWA Portfolio</title>
+    
+    <link rel="manifest" href="manifest.json">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="HPR Portfolio">
+    <link rel="apple-touch-icon" href="icon-192x192.png">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="plexus-background">
+        <canvas id="plexus"></canvas>
+    </div>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                Portofolio
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-toggle" id="mobileToggle" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <main>
+        <section id="home" class="hero-section">
+            <div class="hero-container">
+                <div class="hero-content">
+                    <div class="hero-subtitle">Halo semuanya, Saya </div>
+                    <h1 class="hero-title">
+                        Habibi Putra<br>
+                        Rizqullah
+                    </h1>
+                    <p class="hero-description">
+                        Pada kali ini, saya telah berhasil mengubah website sederhana yang telah dibuat sebelumnya menjadi sebuah <strong>Progressive Web App (PWA)</strong> dengan tampilan modern dan fitur yang lebih interaktif.
+                    </p>
+                </div>
+                
+                <div class="hero-image">
+                    <div class="image-container">
+                        <div class="circle-bg"></div>
+                        <div class="profile-image">
+                            <img src="Hellome.jpg" alt="Habibi Putra Rizqullah" 
+                                 onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\'display:flex;align-items:center;justify-content:center;height:100%;color:rgba(255,255,255,0.7);font-weight:600;\'>📷 Foto Portfolio</div>'">
+                        </div>
+                        <div class="decorative-dots"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <p class="footer-text">&copy; 2025 Habibi Putra Rizqullah. All Rights Reserved.</p>
+        </div>
+    </footer>
+    
+    <script src="script.js"></script>
+</body>
+</html>
