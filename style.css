@@ -1,5 +1,4 @@
 :root {
-    /* colors */
     --bg-primary: #0c1a35;
     --bg-secondary: rgba(12, 26, 53, 0.8);
     --text-primary: #ffffff;
@@ -26,7 +25,6 @@ body {
     transition: all 0.3s ease;
 }
 
-/* Plexus Background */
 .plexus-background {
     position: fixed;
     top: 0;
@@ -42,7 +40,6 @@ body {
     height: 100%;
 }
 
-/* Navigation */
 .navbar {
     position: fixed;
     top: 0;
@@ -98,7 +95,25 @@ body {
     box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
 }
 
-/* Mobile Menu */
+.install-nav-btn {
+    background: var(--accent-blue);
+    color: #fff;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.install-nav-btn:hover {
+    background-color: #2563eb;
+    transform: translateY(-2px);
+}
+
 .mobile-menu-toggle {
     display: none;
     background: none;
@@ -114,7 +129,6 @@ body {
     color: var(--accent-blue);
 }
 
-/* Hero Section */
 .hero-section {
     min-height: 100vh;
     display: flex;
@@ -219,7 +233,6 @@ body {
     transform: translateY(-2px);
 }
 
-/* Hero Image */
 .hero-image {
     display: flex;
     justify-content: center;
@@ -301,7 +314,6 @@ body {
     100% { transform: rotate(360deg); }
 }
 
-/* Generic Section Styles */
 .section-padding {
     padding: clamp(60px, 10vw, 100px) 20px;
     background: var(--bg-secondary);
@@ -328,7 +340,6 @@ body {
     text-align: center;
 }
 
-/* About Section */
 #about .section-title {
     text-align: left;
 }
@@ -375,7 +386,6 @@ body {
     font-weight: 600;
 }
 
-/* Contact Section */
 #contact .container {
     max-width: 800px;
 }
@@ -524,7 +534,6 @@ body {
     margin-top: 10px;
 }
 
-/* Footer */
 .footer {
     padding: 30px 20px;
     border-top: 1px solid var(--border-color);
@@ -540,7 +549,6 @@ body {
     font-size: clamp(0.85em, 1.5vw, 0.95em);
 }
 
-/* Animations */
 @keyframes fadeInUp {
     0% { opacity: 0; transform: translateY(30px); }
     100% { opacity: 1; transform: translateY(0); }
@@ -556,7 +564,6 @@ body {
     100% { opacity: 1; transform: translateX(0); }
 }
 
-/* PWA Features Badges */
 .pwa-features {
     display: flex;
     gap: 15px;
@@ -606,7 +613,7 @@ body {
     
     .nav-links {
         position: fixed;
-        top: 60px; /* Sesuaikan dengan tinggi navbar Anda */
+        top: 60px; 
         left: 0;
         right: 0;
         background: var(--bg-primary);
@@ -616,8 +623,7 @@ body {
         gap: 0;
         border-top: 1px solid var(--border-color);
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-        
-        /* Tambahkan ini untuk animasi */
+
         max-height: 0;
         overflow: hidden;
         opacity: 0;
@@ -625,7 +631,7 @@ body {
     }
     
     .nav-links.active {
-        max-height: 500px; /* Atau tinggi lain yang cukup */
+        max-height: 500px; 
         opacity: 1;
     }
     
@@ -633,13 +639,17 @@ body {
         width: 100%;
     }
     
-    .nav-links a {
+    .nav-links a, .install-nav-btn {
         display: block;
         padding: 15px 20px;
         width: 100%;
         text-align: center;
         border-radius: 8px;
         margin-bottom: 5px;
+    }
+    
+    .install-nav-btn {
+        justify-content: center;
     }
 
     .hero-container {
@@ -736,7 +746,6 @@ body {
     }
 }
 
-/* High DPI screens */
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 2dppx) {
     .profile-image img,
     .about-image-container img {
@@ -744,7 +753,6 @@ body {
     }
 }
 
-/* Reduced motion accessibility */
 @media (prefers-reduced-motion: reduce) {
     * {
         animation-duration: 0.01ms !important;
@@ -760,5 +768,3 @@ body {
         animation: none;
     }
 }
-
-
