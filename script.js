@@ -13,6 +13,10 @@ class PlexusEffect {
         
         window.addEventListener('resize', () => this.resize());
         window.addEventListener('mousemove', (e) => this.handleMouseMove(e));
+        window.addEventListener('mouseout', () => {
+            this.mouse.x = null;
+            this.mouse.y = null;
+        });
     }
     
     resize() {
@@ -102,6 +106,53 @@ class PlexusEffect {
     }
 }
 
+function initMobileMenu() {
+    const mobileToggle = document.getElementById('mobileToggle');
+    const navLinks = document.getElementById('navLinks');
+    
+    if (!mobileToggle || !navLinks) return;
+    
+    mobileToggle.addEventListener('click', function(e) {
+        e.stopPropagation();
+        navLinks.classList.toggle('active');
+        const icon = mobileToggle.querySelector('i');
+        icon.className = navLinks.classList.contains('active') ? 'fas fa-times' : 'fas fa-bars';
+    });
+}
+let deferredPrompt;
+const installButton = document.getElementById('installButton');
+
+window.addEventListener('beforeinstallprompt', (e) => {
+    console.log('beforeinstallprompt event fired');
+    e.preventDefault();
+    deferredPrompt = e;
+
+    if (installButton) {
+        installButton.style.display = 'flex';
+    }
+});
+
+if (installButton) {
+    installButton.addEventListener('click', async () => {
+        if (!deferredPrompt) {
+            return;
+        }
+        deferredPrompt.prompt();
+        const { outcome } = await deferredPrompt.userChoice;
+        console.log(`User response to install prompt: ${outcome}`);
+        deferredPrompt = null;
+        installButton.style.display = 'none';
+    });
+}
+
+window.addEventListener('appinstalled', () => {
+    console.log('PWA was installed successfully');
+    deferredPrompt = null;
+    if (installButton) {
+        installButton.style.display = 'none';
+    }
+});
+
 document.addEventListener('DOMContentLoaded', function() {
     console.log('DOM loaded, initializing...');
     
@@ -112,126 +163,17 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     initMobileMenu();
+    console.log('Mobile menu initialized');
 });
 
-// ========== MOBILE MENU TOGGLE ==========
-function initMobileMenu() {
-    const mobileToggle = document.getElementById('mobileToggle');
-    const navLinks = document.getElementById('navLinks');
-    
-    if (!mobileToggle || !navLinks) {
-        console.error('Mobile menu elements not found!');
-        return;
-    }
-    
-    // Toggle menu on button click
-    mobileToggle.addEventListener('click', function(e) {
-        e.stopPropagation();
-        navLinks.classList.toggle('active');
-        
-        // Change icon
-        const icon = mobileToggle.querySelector('i');
-        if (navLinks.classList.contains('active')) {
-            icon.className = 'fas fa-times';
-        } else {
-            icon.className = 'fas fa-bars';
-        }
-    });
-
-    navLinks.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', function() {
-            navLinks.classList.remove('active');
-            mobileToggle.querySelector('i').className = 'fas fa-bars';
-        });
-    });
-
-    document.addEventListener('click', function(e) {
-        if (!e.target.closest('.nav-container') && navLinks.classList.contains('active')) {
-            navLinks.classList.remove('active');
-            mobileToggle.querySelector('i').className = 'fas fa-bars';
-        }
-    });
-    
-    console.log('Mobile menu initialized');
-}
-
-// ========== SERVICE WORKER ==========
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
         navigator.serviceWorker.register('./service-worker.js')
             .then((registration) => {
-                console.log('Service Worker registered successfully!');
-                console.log('Scope:', registration.scope);
+                console.log('Service Worker registered successfully with scope:', registration.scope);
             })
             .catch((error) => {
                 console.log('Service Worker registration FAILED:', error);
             });
     });
 }
-
-// ========== PWA INSTALL ==========
-let deferredPrompt;
-let installButton;
-
-if (window.location.pathname === '/' || window.location.pathname.includes('index.html')) {
-    window.addEventListener('load', () => {
-        const heroContent = document.querySelector('.hero-content');
-        if (heroContent) {
-            installButton = document.createElement('button');
-            installButton.className = 'btn-primary';
-            installButton.innerHTML = '<i class="fas fa-download"></i> Install App';
-            installButton.style.display = 'none';
-            installButton.style.marginTop = '20px';
-            
-            heroContent.appendChild(installButton);
-            
-            installButton.addEventListener('click', async () => {
-                if (!deferredPrompt) {
-                    alert('PWA sudah terinstall atau browser tidak mendukung instalasi.');
-                    return;
-                }
-
-                deferredPrompt.prompt();
-
-                const { outcome } = await deferredPrompt.userChoice;
-                console.log(`User response to install prompt: ${outcome}`);
-                
-                if (outcome === 'accepted') {
-                    console.log('User accepted the install prompt');
-                    installButton.style.display = 'none';
-                } else {
-                    console.log('User dismissed the install prompt');
-                }
-
-                deferredPrompt = null;
-            });
-        }
-    });
-}
-
-window.addEventListener('beforeinstallprompt', (e) => {
-    console.log('beforeinstallprompt event fired');
-    e.preventDefault();
-    deferredPrompt = e;
-
-    if (installButton) {
-        installButton.style.display = 'inline-flex';
-    }
-});
-
-window.addEventListener('appinstalled', () => {
-    console.log('PWA was installed successfully');
-    deferredPrompt = null;
-    if (installButton) {
-        installButton.style.display = 'none';
-    }
-    alert('Aplikasi berhasil diinstall!');
-});
-
-window.addEventListener('online', () => {
-    console.log('Back online');
-});
-
-window.addEventListener('offline', () => {
-    console.log('Gone offline');
-});
